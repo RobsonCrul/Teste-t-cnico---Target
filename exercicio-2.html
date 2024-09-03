@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 2</title>
+</head>
+<body>
+    <script>
+        function fibonacci(numeroDefinido){
+            let num = [0, 1]
+            
+
+            while (num[num.length - 1] < numeroDefinido){
+                num.push(num[num.length - 1] + num[num.length -2])
+            }
+
+            return num.includes(numeroDefinido)
+        }
+
+        let numeroDefinido = -1
+
+        if(fibonacci(numeroDefinido)){
+            alert(`O número ${numeroDefinido} pertence à sequência de fibonacci`)
+        } else {
+            alert(`O número ${numeroDefinido} não pertence à sequência de fibonacci`)
+        }
+    </script>
+</body>
+</html>

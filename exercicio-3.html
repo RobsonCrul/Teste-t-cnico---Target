@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio 3</title>
+</head>
+<body>
+    <script>
+        // Simulação dos dados de faturamento diário em JSON
+        const faturamentoMensal = [
+            {"dia": 1, "valor": 22174.1664},
+            {"dia": 2, "valor": 24537.6698},
+            {"dia": 3, "valor": 26139.6134},
+            {"dia": 4, "valor": 0.0},
+            {"dia": 5, "valor": 0.0},
+            {"dia": 6, "valor": 26742.6612},
+            {"dia": 7, "valor": 0.0},
+            {"dia": 8, "valor": 42889.2258},
+            {"dia": 9, "valor": 46251.174},
+            {"dia": 10, "valor": 11191.4722},
+            // Continue adicionando os valores para todos os dias do mês
+        ];
+
+        function calcularFaturamento(faturamento) {
+            // Filtra os dias com faturamento para ignorar os dias com valor zero
+            const diasComFaturamento = faturamento.filter(d => d.valor > 0);
+
+            // Calcula o menor e o maior valor de faturamento
+            const menorFaturamento = Math.min(...diasComFaturamento.map(d => d.valor));
+            const maiorFaturamento = Math.max(...diasComFaturamento.map(d => d.valor));
+
+            // Calcula a média mensal de faturamento
+            const somaFaturamento = diasComFaturamento.reduce((acc, d) => acc + d.valor, 0);
+            const mediaFaturamento = somaFaturamento / diasComFaturamento.length;
+
+            // Conta o número de dias com faturamento superior à média
+            const diasAcimaDaMedia = diasComFaturamento.filter(d => d.valor > mediaFaturamento).length;
+
+            return {
+                menorFaturamento,
+                maiorFaturamento,
+                diasAcimaDaMedia
+            };
+        }
+
+        // Executa a função e exibe os resultados
+        const resultado = calcularFaturamento(faturamentoMensal);
+
+        alert(`Menor faturamento: ${resultado.menorFaturamento.toFixed(2)}`);
+        alert(`Maior faturamento: ${resultado.maiorFaturamento.toFixed(2)}`);
+        alert(`Número de dias com faturamento acima da média: ${resultado.diasAcimaDaMedia}`);
+        
+        console.log(resultado);
+    </script>
+</body>
+</html>
